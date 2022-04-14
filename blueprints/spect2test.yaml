@@ -1,39 +1,67 @@
 spec_version: 2-preview
 description: Robotshot microservices application deployed on K8S with Helm and RDS deployed with TF
 
+
 inputs:
-  # hostname:
-  #   type: string
-  #   display-style: normal
-  #   default: "robot-shop"
-  #   description: "Sub-domain of qualitest.click"
+  db_engine:
+    type: string
+    display-style: normal
+    default: "MySQL"
+    description: 'Engine for RDS. Valid values are "aurora", "aurora-mysql", "aurora-postgresql", "custom-oracle-ee", "mariadb", "mysql", "oracle-ee", "postgres", "sqlserver-ee", "sqlserver-se", "sqlserver-ex", "sqlserver-web"'
+  db_engine_version:
+    type: string
+    display-style: normal
+    default: "8.0.26"
+    description: "Version of RDS Engine. Default is 5.7"
+  db_user:
+    type: string
+    display-style: normal
+    default: "adminuser"
+    description: "User name for the RDS database"
+  db_db_password:
+    type: string
+    display-style: masked
+    default: "Pass1234567+"
+    description: "Password for the RDS database"
   
+
 # values that starts with '{' for liquid template must be encosed with quotes so YAML won't consider them as dict
 outputs:
   WebsiteUrl:
     value: 'robotshop-{{ sandboxid | downcase }}.testquali.click:8080'
-  
+  DB_Hostname:
+    value: '{{ .grains.rds.outputs.hostname }}'
+
 
 grains:
-  # helloTF:
-  #   kind: terraform
-  #   spec:
-  #     source:
-  #       store: autogen_repo_sandbox_3416a76b
-  #       path: terraform/simple-tf-module
-  #     host:
-  #       cloud-account: aws
-  #       compute-service: eks
-  #     inputs:
-  #       - test_input1: env-input-{{.inputs.input1}}
-  #       - test_input2: env-id-{{sandboxId}}
-  #     ouputs:
-  #       - output1
-  #       - output2
 
-  helloHelm:
+  rds:
+    kind: terraform
+    spec:
+      source:
+        store: Terraform-Assets
+        path: rds
+      host:
+        cloud-account: aws-presales
+        compute-service: eks-demo
+      inputs:
+        - size: small
+        - allocated_storage: 20
+        - engine_version: '{{ .inputs.db_engine_version }}'
+        - engine: '{{ .inputs.db_engine }}'
+        - username: '{{ .inputs.db_user }}'
+        - password: '{{ .inputs.db_password }}'
+        - vpc_id: vpc-02e3bca90b081cd0f
+        - region: us-east-1
+        - storage_type: gp2
+      ouputs:
+        - hostname
+        - connection_string
+
+
+  robotShop:
     kind: helm
-    # depends-on: helloTF
+    depends-on: rds
     spec:
       source:
         store: Project-Pivot-Assets
@@ -42,8 +70,9 @@ grains:
         cloud-account: aws-presales
         compute-service: eks-demo
       # commands:
-      #   - "dep up bitnami/node"
+      #   - "dep up xxx"
 
       inputs:
         - hostname: 'robotshop-{{ sandboxid | downcase }}'
+        - connection_string: '{{ .grains.rds.outputs.connection_string }}'
         - redis.storageClassName: gp2        

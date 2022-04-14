@@ -2,11 +2,11 @@ spec_version: 2-preview
 description: Robotshot microservices application deployed on K8S with Helm and RDS deployed with TF
 
 inputs:
-  hostname:
-    type: string
-    display-style: normal
-    default: "robot-shop"
-    description: "Sub-domain of qualitest.click"
+  # hostname:
+  #   type: string
+  #   display-style: normal
+  #   default: "robot-shop"
+  #   description: "Sub-domain of qualitest.click"
   
 # values that starts with '{' for liquid template must be encosed with quotes so YAML won't consider them as dict
 outputs:

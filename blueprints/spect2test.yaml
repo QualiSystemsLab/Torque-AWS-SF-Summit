@@ -20,7 +20,7 @@ inputs:
     description: "User name for the RDS database"
   db_db_password:
     type: string
-    display-style: masked
+    display-style: normal
     default: "Pass1234567+"
     description: "Password for the RDS database"
   

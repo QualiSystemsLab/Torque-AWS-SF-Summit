@@ -18,7 +18,7 @@ inputs:
     display-style: normal
     default: "adminuser"
     description: "User name for the RDS database"
-  db_db_password:
+  db_password:
     type: string
     display-style: normal
     default: "Pass1234567+"

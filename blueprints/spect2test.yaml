@@ -1,5 +1,5 @@
 spec_version: 2-preview
-description: description text
+description: Robotshot microservices application deployed on K8S with Helm and RDS deployed with TF
 
 inputs:
   hostname:
@@ -10,12 +10,9 @@ inputs:
   
 # values that starts with '{' for liquid template must be encosed with quotes so YAML won't consider them as dict
 outputs:
-  output1:
-    value: '{{sandboxId}}'
-  output2:
-    value: '{{.inputs.input1}}'
-  output3:
-    value: '{{.grains.helloTF.outputs.output1}}'
+  WebsiteUrl:
+    value: 'robotshop-{{ sandboxid | downcase }}.testquali.click:8080'
+  
 
 grains:
   # helloTF:
@@ -48,6 +45,5 @@ grains:
       #   - "dep up bitnami/node"
 
       inputs:
-        - hostname: '{{.inputs.input1}}'
-        - redis.storageClassName: gp2
-        - sandboxid: '{{ sandboxid | downcase }}'
+        - hostname: 'robotshop-{{ sandboxid | downcase }}'
+        - redis.storageClassName: gp2        

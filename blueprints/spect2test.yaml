@@ -58,12 +58,9 @@ grains:
         - acl: private
         - name: 'robotshop-s3-{{ sandboxid | downcase }}'
 
-
   robotShopMicroservices:
     kind: helm
-    depends-on: 
-      - mySqlDB
-      - s3Bucket
+    depends-on: mySqlDB      
     spec:
       source:
         store: Project-Pivot-Assets

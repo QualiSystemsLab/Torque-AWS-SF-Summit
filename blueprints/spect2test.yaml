@@ -3,6 +3,12 @@ description: Robotshot microservices application deployed on K8S with Helm and R
 
 
 inputs:
+  version:
+    type: string
+    display-style: normal
+    default: "0.4.3"
+    description: "Version of the robotShop micorservices application"
+
   db_engine_version:
     type: string
     display-style: normal
@@ -73,6 +79,7 @@ grains:
 
       inputs:
         - hostname: 'robotshop-{{ sandboxid | downcase }}'
+        - version: '{{ .inputs.version }}'
         - connectionString: '{{ .grains.mySqlDB.outputs.connection_string }}'
         - objectStore.s3BucketArn: '{{ .grains.s3Bucket.outputs.s3_bucket_arn }}'
         - redis.storageClassName: gp2        

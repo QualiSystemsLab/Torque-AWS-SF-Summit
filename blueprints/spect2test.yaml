@@ -66,9 +66,7 @@ grains:
 
   robotShopMicroservices:
     kind: helm
-    depends-on: 
-      - mySqlDB      
-      - s3Bucket
+    depends-on: mySqlDB, s3Bucket
     spec:
       source:
         store: Project-Pivot-Assets

@@ -3,23 +3,23 @@ description: Robotshot microservices application deployed on K8S with Helm and R
 
 
 inputs:
-  - version:
-      type: string
-      display-style: normal
-      default: "0.4.3"
-      description: "Version of the robotShop micorservices application"
+  version:
+    type: string
+    display-style: normal
+    default: "0.4.3"
+    description: "Version of the robotShop micorservices application"
 
-  - db_size:
-      type: string
-      display-style: normal
-      default: "small"
-      description: "The instance type of the RDS instance. Small, medium, or large."
+  db_size:
+    type: string
+    display-style: normal
+    default: "small"
+    description: "The instance type of the RDS instance. Small, medium, or large."
 
-  - db_engine_version:
-      type: string
-      display-style: normal
-      default: "8.0.26"
-      description: "Version of RDS Engine. Default is 5.7"
+  db_engine_version:
+    type: string
+    display-style: normal
+    default: "8.0.26"
+    description: "Version of RDS Engine. Default is 5.7"
 
 
 # values that starts with '{' for liquid template must be encosed with quotes so YAML won't consider them as dict

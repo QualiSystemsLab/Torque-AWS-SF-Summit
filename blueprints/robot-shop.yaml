@@ -36,7 +36,7 @@ grains:
     kind: terraform
     spec:
       source:        
-        path: github.com/QualiSystemsLab/Torque-Spec2-Demos.git//terraform/rds
+        path: github.com/QualiSystemsLab/terraform-modules.git//rds
       host:
         cloud-account: AWS-Sales
         compute-service: eks-demo-sales
@@ -58,7 +58,7 @@ grains:
     kind: terraform
     spec: 
       source:
-        path: github.com/QualiSystemsLab/Torque-Spec2-Demos.git//terraform/s3
+        path: github.com/QualiSystemsLab/terraform-modules.git//s3
       host:
         cloud-account: AWS-Sales
         compute-service: eks-demo-sales

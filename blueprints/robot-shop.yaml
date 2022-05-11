@@ -35,12 +35,11 @@ grains:
   mySqlDB:
     kind: terraform
     spec:
-      source:
-        store: Terraform-Assets
-        path: rds
+      source:        
+        path: github.com/QualiSystemsLab/Torque-Spec2-Demos.git//terraform/rds
       host:
-        cloud-account: aws-presales
-        compute-service: eks-demo
+        cloud-account: AWS-Sales
+        compute-service: eks-demo-sales
       inputs:
         - sandbox_id: '{{ sandboxid | downcase }}'
         - size: '{{ .inputs.db_size }}' 
@@ -59,11 +58,10 @@ grains:
     kind: terraform
     spec: 
       source:
-        store: Terraform-Assets
-        path: s3
+        path: github.com/QualiSystemsLab/Torque-Spec2-Demos.git//terraform/s3
       host:
-        cloud-account: aws-presales
-        compute-service: eks-demo
+        cloud-account: AWS-Sales
+        compute-service: eks-demo-sales
       inputs:
         - region: us-east-1
         - acl: private
@@ -74,11 +72,10 @@ grains:
     depends-on: mySqlDB, s3Bucket
     spec:
       source:
-        store: Project-Pivot-Assets
-        path: robotShop
+        path: https://github.com/QualiSystemsLab/Torque-Project-Pivot.git//robotShop
       host:
-        cloud-account: aws-presales
-        compute-service: eks-demo
+        cloud-account: AWS-Sales
+        compute-service: eks-demo-sales
       # commands:
       #   - "dep up xxx"
 

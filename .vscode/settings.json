@@ -1,0 +1,11 @@
+{
+    "yaml.schemas": {
+        "file:///C%3A/temp/spec2/blueprint-spec2-schema.json": "**Torque-AWS-SF-Summit/blueprints/*.yaml",
+        "file:///c%3A/Users/alex.az/.vscode/extensions/quali-torque.torque-language-extension-0.0.12/schemas/blueprint-schema.json": [
+            "**/blueprints/*.yaml",
+            "file:///c%3A/work/git/Torque-AWS-SF-Summit/Torque-AWS-SF-Summit/blueprints/robot-shop.yaml"
+        ],
+        "file:///c%3A/Users/alex.az/.vscode/extensions/quali-torque.torque-language-extension-0.0.12/schemas/application-schema.json": "**/applications/**/*.yaml",
+        "file:///c%3A/Users/alex.az/.vscode/extensions/quali-torque.torque-language-extension-0.0.12/schemas/service-schema.json": "**/services/**/*.yaml"
+    }
+}

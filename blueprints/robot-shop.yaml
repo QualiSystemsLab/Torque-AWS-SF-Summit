@@ -72,7 +72,7 @@ grains:
     depends-on: mySqlDB, s3Bucket
     spec:
       source:
-        path: https://github.com/QualiSystemsLab/Torque-Project-Pivot.git//robotShop
+        path: github.com/QualiSystemsLab/Torque-Project-Pivot.git//robotShop
       host:
         cloud-account: AWS-Sales
         compute-service: eks-demo-sales

@@ -50,7 +50,7 @@ grains:
         - username: adminuser
         - vpc_id: vpc-02e3bca90b081cd0f
         - region: us-east-1
-      ouputs:
+      outputs:
         - hostname
         - connection_string
 
@@ -66,6 +66,8 @@ grains:
         - region: us-east-1
         - acl: private
         - name: 'robotshop-s3-{{ sandboxid | downcase }}'
+      outputs:
+        - s3_bucket_arn
 
   robotShopMicroservices:
     kind: helm

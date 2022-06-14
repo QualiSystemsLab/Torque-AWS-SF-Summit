@@ -26,6 +26,7 @@ inputs:
 outputs:
   WebsiteUrl:
     value: 'robotshop-{{ sandboxid | downcase }}.testquali.click:8080'
+    kind: link
   DB_Hostname:
     value: '{{ .grains.mySqlDB.outputs.hostname }}'
 

@@ -19,7 +19,7 @@ inputs:
     type: string
     display-style: normal
     default: "8.0.26"
-    description: "Version of RDS Engine. Default is 5.7"
+    description: "Version of RDS Engine"
 
 
 # values that starts with '{' for liquid template must be encosed with quotes so YAML won't consider them as dict

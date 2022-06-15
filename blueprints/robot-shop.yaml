@@ -67,6 +67,12 @@ grains:
         - name: 'robotshop-s3-{{ sandboxid | downcase }}'
       outputs:
         - s3_bucket_arn
+      #scripts: 
+      #  pre-tf-init:
+      #    source:
+      #      store: my-tf
+      #      path : scripts/hello_world.sh
+      #    arguments: '{{ sandboxid }}'
 
   robotShopMicroservices:
     kind: helm
